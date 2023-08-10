@@ -23,7 +23,7 @@ const Books = () => {
   const fetchBooks = async () => {
     try {
       const { data } = await axios.get(
-        `http://localhost:5000/api/v1/booklist/${page}/${perPage}/0`
+        `https://book-nest-backend.onrender.com/api/v1/booklist/${page}/${perPage}/0`
       );
 
       setBooks(data.data[0].Rows);

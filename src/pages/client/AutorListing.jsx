@@ -6,7 +6,7 @@ import axios from 'axios'
 const AuthorListing = () => {
   const [authors,setAuthors]=useState([])
   const fetchAutor=async()=>{
-    const response=await axios.get('http://localhost:5000/api/v1/writers')
+    const response=await axios.get('https://book-nest-backend.onrender.com/api/v1/writers')
     setAuthors(response.data)
   }
   useEffect(()=>{

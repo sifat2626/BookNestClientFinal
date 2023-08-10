@@ -19,7 +19,7 @@ const Book = () => {
   const fetchBook = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/v1/search/book/${id}`
+        `https://book-nest-backend.onrender.com/api/v1/search/book/${id}`
       );
       setBook(res.data);
     } catch (error) {

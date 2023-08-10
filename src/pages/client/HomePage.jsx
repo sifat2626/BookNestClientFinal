@@ -15,7 +15,7 @@ const HomePage = () => {
     const fetchCategories = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/v1/categories"
+          "https://book-nest-backend.onrender.com/api/v1/categories"
         );
         console.log("response: ", response.data);
 

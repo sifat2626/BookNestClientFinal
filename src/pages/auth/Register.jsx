@@ -24,7 +24,7 @@ const Register = () => {
     try {
       setImgUploading(true);
       const res = await axios.post(
-        "http://localhost:5000/api/v1/cloudinaryimage",
+        "https://book-nest-backend.onrender.com/api/v1/cloudinaryimage",
         { image: files[0] },
         {
           headers: {

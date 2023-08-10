@@ -23,7 +23,7 @@ const FilterOption = ({
     const fetchCategories = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/v1/categories"
+          "https://book-nest-backend.onrender.com/api/v1/categories"
         );
         const data = response.data;
         setCategories(data);
