@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useReducer } from "react";
-import { wishlistReducer } from "../reducer/WishlistReducer";
+import { wishlistReducer } from "../reducer/WishListReducer.jsx";
 
 const Wishlist = createContext();
 
