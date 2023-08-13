@@ -58,7 +58,7 @@ const ProductPanel = ({
         );
         // const response = await axios.get(`http://localhost:5000/api/v1/filter?authors=kazi%20nazrul%20islam`);
         const data = response.data;
-        console.log(`http://localhost:5000/api/v1/filter?${queryParams}`);
+        console.log(`https://book-nest-backend.onrender.com/api/v1/filter?${queryParams}`);
         // console.log(`response = ${JSON.stringify(data)}`)
         setBooks(data.filteredBooks); // Set the fetched data directly to the books state
         setTotal(data.total)

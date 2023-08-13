@@ -29,7 +29,7 @@ const Book = () => {
   const fetchRelatedBook = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/v1/similarbook/${id}/${categoryid}`
+        `https://book-nest-backend.onrender.com/api/v1/similarbook/${id}/${categoryid}`
       );
       setRelatedBook(res.data);
       console.log("relatedBook", res.data);
@@ -53,7 +53,7 @@ const Book = () => {
         try {
           // Fetch interested books based on user interests
           const interestedBooksResponse = await axios.get(
-            `http://localhost:5000/api/v1/interestedbooks`
+            `https://book-nest-backend.onrender.com/api/v1/interestedbooks`
           );
           setInterestedBooks(interestedBooksResponse.data);
         } catch (error) {

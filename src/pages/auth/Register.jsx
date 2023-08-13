@@ -59,7 +59,7 @@ const Register = () => {
         return;
       }
       const { data } = await axios.post(
-        "http://localhost:5000/api/v1/register",
+        "https://book-nest-backend.onrender.com/api/v1/register",
         {
           name,
           email,

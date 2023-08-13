@@ -39,7 +39,7 @@ const BookCard = ({ book, category }) => {
     // Logic to update userInterests
     try {
       // Save interests to the backend
-      const { data } = await axios.post('http://localhost:5000/api/v1/interests', {
+      const { data } = await axios.post('https://book-nest-backend.onrender.com/api/v1/interests', {
         userEmail: auth.user?.email,
         interestId: book?.category._id
       });

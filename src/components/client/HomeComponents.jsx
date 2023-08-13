@@ -10,7 +10,7 @@ const HomeComponents = ({category}) => {
 	useEffect(() => {
 		const fetchBooksByCategory = async () => {
 			try {
-				const response = await axios.get(`http://localhost:5000/api/v1/search/category/${category.name}`);
+				const response = await axios.get(`https://book-nest-backend.onrender.com/api/v1/search/category/${category.name}`);
 				setBooks(response.data);
 			} catch (error) {
 				console.error('Error fetching books:', error);
