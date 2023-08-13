@@ -54,7 +54,7 @@ const ProductPanel = ({
 
         // Fetch filtered books
         const response = await axios.get(
-          `http://localhost:5000/api/v1/filter?${queryParams}`
+          `hhttps://book-nest-backend.onrender.com/api/v1/filter?${queryParams}`
         );
         // const response = await axios.get(`http://localhost:5000/api/v1/filter?authors=kazi%20nazrul%20islam`);
         const data = response.data;

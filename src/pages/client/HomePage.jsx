@@ -36,7 +36,7 @@ const HomePage = () => {
 			const fetchSearchedBook = async () => {
         try {
           const response = await axios.get(
-            `http://localhost:5000/api/v1/search/books/${search}`
+            `https://book-nest-backend.onrender.com/api/v1/search/books/${search}`
           );
           console.log("response: ", response.data);
           setSearchedBook(response.data);

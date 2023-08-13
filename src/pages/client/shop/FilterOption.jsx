@@ -36,7 +36,7 @@ const FilterOption = ({
     const fetchAuthors = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/v1/writers"
+          "https://book-nest-backend.onrender.com/api/v1/writers"
         );
         const data = response.data;
         setAuthors(data);
@@ -49,7 +49,7 @@ const FilterOption = ({
     const fetchPublications = async () => {
       try {
         const response = await axios.get(
-          "http://localhost:5000/api/v1/publications"
+          "https://book-nest-backend.onrender.com/api/v1/publications"
         );
         const data = response.data;
         setPublications(data);
