@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import ReusableAuthor from "../../components/author/ReusableAuthor.jsx";
-import { useParams } from "react-router-dom"; // Import the useParams hook
+
+import { useParams } from "react-router-dom";
+import ReusablePublication from "../../components/author/ReusablePublication.jsx";
+
 
 const PublicationById = () => {
 	const { id } = useParams(); // Get the id parameter from the URL
@@ -29,9 +31,9 @@ const PublicationById = () => {
 
 	return (
 		<div className="author-by-id">
-			<ReusableAuthor
+			<ReusablePublication
 				photoSrc={authorData.photo}
-				title={authorData.name}
+				name={authorData.name}
 				// description={authorData.biography}
 				books={authorBooks}
 				type="publication"
