@@ -3,7 +3,7 @@ import "./App.css";
 import Loader from "./components/loader/Loader";
 // import { SearchState } from "./context/SearchContext.jsx";
 import DefaultLayout from "./layout/admin/DefaultLayout";
-import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
+import {BrowserRouter, Route, Routes, Navigate, useParams} from "react-router-dom";
 import NavbarPrev from "./layout/client/Navbar-prev.jsx";
 import Footer from "./components/footer/Footer.jsx";
 import ProductListByCategory from "./components/category/ProductListByCategory.jsx";
@@ -15,6 +15,7 @@ const Contact = lazy(() => import("./pages/client/Contact"));
 const Login = lazy(() => import("./pages/auth/Login.jsx"));
 const Register = lazy(() => import("./pages/auth/Register.jsx"));
 import { Toaster, toast } from "react-hot-toast";
+import AuthorById from "./pages/client/AuthorById.jsx";
 
 const ForgotPassword = lazy(() => import("./pages/auth/ForgotPassword.jsx"));
 // const name = lazy(() => import("link"));
@@ -47,6 +48,8 @@ function App() {
   useEffect(() => {
     setTimeout(() => setLoading(false), 1000);
   }, []);
+
+
 
   return loading ? (
     <Loader />
@@ -110,6 +113,15 @@ function App() {
             element={
               <Suspense fallback={<Loader />}>
                 <AuthorListing />
+                {/*<AuthorDetailsCard />*/}
+              </Suspense>
+            }
+          />
+          <Route
+            path="/author/:id"
+            element={
+              <Suspense fallback={<Loader />}>
+                <AuthorById authorId={useParams().id}/>
                 {/*<AuthorDetailsCard />*/}
               </Suspense>
             }
