@@ -5,9 +5,12 @@ import { toast } from "react-hot-toast";
 import { useAuth } from "../../context/auth.jsx";
 import styled from "styled-components";
 
+
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+
 
   const [auth, setAuth] = useAuth();
   const navigate = useNavigate();

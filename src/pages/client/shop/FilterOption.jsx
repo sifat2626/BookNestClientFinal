@@ -1,22 +1,47 @@
 import React, { Fragment, useEffect, useState } from "react";
 import axios from "axios";
 import "./FilterOption.css";
+import { useFilterContext } from "../../../context/FilterProvider";
 
-const FilterOption = ({
-  selectedCategory,
-  setSelectedCategory,
-  selectedPublication,
-  setSelectedPublication,
-  selectedAuthor,
-  setSelectedAuthor,
-  minPrice,
-  setMinPrice,
-  maxPrice,
-  setMaxPrice,
-}) => {
+
+
+const FilterOption = () => {
   const [categories, setCategories] = useState([]);
   const [authors, setAuthors] = useState([]);
   const [publications, setPublications] = useState([]);
+
+  // const [filterCatagory,setFilterCatagory]=useState("");
+  // const [filterPublication,setFilterPublication]=useState("");
+  // const [filterMinPrice,setFilterMinPrice]=useState("");
+  // const [filterMaxPrice,setFilterMaxPrice]=useState("");
+  // const [filterAthor,setFilterAthor]=useState("");
+  
+  
+  const {
+    selectedCategory,
+    setSelectedCategory,
+    selectedPublication,
+    setSelectedPublication,
+    selectedAuthor,
+    setSelectedAuthor,
+    minPrice,
+    setMinPrice,
+    maxPrice,
+    setMaxPrice,
+    sort,
+    setSort,
+    perPage,
+    setPerPage,
+    books,
+    total,
+    loading,
+    handleLoadMore,
+    handleClearFilter,
+  } = useFilterContext();
+
+  // console.log(selectedCategory,selectedPublication,selectedAuthor,minPrice,maxPrice)
+
+  
 
   useEffect(() => {
     // Fetch categories from the API
