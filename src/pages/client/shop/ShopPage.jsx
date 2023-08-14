@@ -1,6 +1,7 @@
 import React, { Fragment, useState } from "react";
 import FilterPanel from "./FilterOption.jsx";
 import ProductPanel from "./ProductPanel";
+import Books from "../Books.jsx";
 
 const ShopPage = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -30,7 +31,7 @@ const ShopPage = () => {
               />
             </aside>
             <div className="col-lg-9 col-8">
-              <ProductPanel
+              <Books
                 selectedCategory={selectedCategory}
                 selectedPublication={selectedPublication}
                 selectedAuthor={selectedAuthor}
