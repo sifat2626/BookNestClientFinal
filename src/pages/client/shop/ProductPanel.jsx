@@ -1,5 +1,5 @@
 import React from "react";
-import { useFilterContext } from "./FilterContext"; // Adjust the import path
+import { useFilterContext } from "../../../context/FilterProvider.jsx"; // Adjust the import path
 import axios from "axios";
 import BookCard from "../../../components/category/BookCard";
 import "./ProductPanel.css";
