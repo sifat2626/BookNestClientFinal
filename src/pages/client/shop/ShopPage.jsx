@@ -2,7 +2,7 @@ import React, { Fragment, useState } from "react";
 import FilterPanel from "./FilterOption.jsx";
 
 import Books from "../Books.jsx";
-import { useFilterContext } from "../../../context/FilterProvider";
+
 
 const ShopPage = () => {
   // const [selectedCategory, setSelectedCategory] = useState(null);
