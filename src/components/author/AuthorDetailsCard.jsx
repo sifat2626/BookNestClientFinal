@@ -1,5 +1,5 @@
 import React, { Fragment } from 'react'
-import author from '../../../assets/client/images/team/member-2.jpg'
+import author from '../../assets/images/team/member-2.jpg'
 
 const AuthorDetailsCard = () => {
     return (

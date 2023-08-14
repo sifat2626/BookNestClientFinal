@@ -15,6 +15,7 @@ const Contact = lazy(() => import("./pages/client/Contact"));
 const Login = lazy(() => import("./pages/auth/Login.jsx"));
 const Register = lazy(() => import("./pages/auth/Register.jsx"));
 import { Toaster, toast } from "react-hot-toast";
+
 const ForgotPassword = lazy(() => import("./pages/auth/ForgotPassword.jsx"));
 // const name = lazy(() => import("link"));
 //client
@@ -109,6 +110,7 @@ function App() {
             element={
               <Suspense fallback={<Loader />}>
                 <AuthorListing />
+                {/*<AuthorDetailsCard />*/}
               </Suspense>
             }
           />
