@@ -350,7 +350,7 @@ const NavbarPrev = () => {
               <nav className="main-nav">
                 <ul className="menu sf-arrows">
                   <li className="megamenu-container">
-                    <NavLink to="/shop" className=" nb">
+                    <NavLink to="/" className=" nb">
                       Home
                     </NavLink>
                   </li>

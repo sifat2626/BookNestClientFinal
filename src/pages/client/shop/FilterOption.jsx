@@ -66,7 +66,7 @@ const FilterOption = ({
   return (
     <Fragment>
       {/* Category */}
-      <div className="widget widget-collapsible">
+      <div className="widget widget-collapsible mt-4">
         <p>
           <a
             className=""
