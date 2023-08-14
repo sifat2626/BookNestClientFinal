@@ -1,6 +1,6 @@
 import React, { Fragment, useState } from "react";
 import FilterPanel from "./FilterOption.jsx";
-import ProductPanel from "./ProductPanel";
+
 import Books from "../Books.jsx";
 import { useFilterContext } from "../../../context/FilterProvider";
 
