@@ -1,8 +1,9 @@
 import React from "react";
-import { useFilterContext } from "./FilterContext"; // Adjust the import path
+// import { useFilterContext } from "./FilterContext"; // Adjust the import path
 import axios from "axios";
 import BookCard from "../../../components/category/BookCard";
 import "./ProductPanel.css";
+import { useFilterContext } from "../../../context/FilterProvider";
 
 const ProductPanel = () => {
   const {
@@ -22,6 +23,7 @@ const ProductPanel = () => {
     handleClearFilter,
   } = useFilterContext(); // Use the context hook
 
+  console.log(selectedCategory)
   // Fetch the filtered books from the API and set the books state
   const fetchFilteredBooks = async () => {
     try {

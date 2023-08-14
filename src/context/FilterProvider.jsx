@@ -13,6 +13,8 @@ export function FilterProvider({ children }) {
 	const [selectedAuthor, setSelectedAuthor] = useState("");
 	const [minPrice, setMinPrice] = useState("");
 	const [maxPrice, setMaxPrice] = useState("");
+
+
 	const [sort, setSort] = useState("");
 	const [perPage, setPerPage] = useState(10);
 
@@ -66,6 +68,8 @@ export function FilterProvider({ children }) {
 		perPage,
 	]);
 
+
+	
 	const handleClearFilter = () => {
 		setSelectedCategory("");
 		setSelectedPublication("");
@@ -102,5 +106,23 @@ export function FilterProvider({ children }) {
 		>
 			{children}
 		</FilterContext.Provider>
+
+		// <FilterContext.Provider
+		// 	value={{
+		// 		selectedCategory,
+		// 		setSelectedCategory,
+		// 		selectedPublication,
+		// 		setSelectedPublication,
+		// 		selectedAuthor,
+		// 		setSelectedAuthor,
+		// 		minPrice,
+		// 		setMinPrice,
+		// 		maxPrice,
+		// 		setMaxPrice,
+				
+		// 	}}
+		// >
+		// 	{children}
+		// </FilterContext.Provider>
 	);
 }

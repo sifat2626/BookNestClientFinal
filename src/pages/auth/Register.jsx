@@ -4,6 +4,7 @@ import axios from "axios";
 import { toast } from "react-hot-toast";
 import { useAuth } from "../../context/auth.jsx"; // Make sure to import useAuth from the correct path
 import styled from "styled-components";
+import { useFilterContext } from "../../context/FilterProvider.jsx";
 const Register = () => {
   // state
   const [name, setName] = useState("");
@@ -14,6 +15,8 @@ const Register = () => {
   const [address, setAddress] = useState("");
   const [photo, setPhoto] = useState("");
   let [imgUploading, setImgUploading] = useState(false);
+
+
 
   // hooks
   const [auth, setAuth] = useAuth();
