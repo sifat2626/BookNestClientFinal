@@ -16,6 +16,8 @@ const Login = lazy(() => import("./pages/auth/Login.jsx"));
 const Register = lazy(() => import("./pages/auth/Register.jsx"));
 import { Toaster, toast } from "react-hot-toast";
 import AuthorById from "./pages/client/AuthorById.jsx";
+import PublicationListing from "./pages/client/PublicationListing.jsx";
+import PublicationById from "./pages/client/PublicationById.jsx";
 
 const ForgotPassword = lazy(() => import("./pages/auth/ForgotPassword.jsx"));
 // const name = lazy(() => import("link"));
@@ -117,11 +119,32 @@ function App() {
               </Suspense>
             }
           />
+
+          <Route
+            path="/publications"
+            element={
+              <Suspense fallback={<Loader />}>
+                <PublicationListing />
+                {/*<AuthorDetailsCard />*/}
+              </Suspense>
+            }
+          />
+
           <Route
             path="/author/:id"
             element={
               <Suspense fallback={<Loader />}>
                 <AuthorById authorId={useParams().id}/>
+                {/*<AuthorDetailsCard />*/}
+              </Suspense>
+            }
+          />
+
+          <Route
+            path="/publication/:id"
+            element={
+              <Suspense fallback={<Loader />}>
+                <PublicationById authorId={useParams().id}/>
                 {/*<AuthorDetailsCard />*/}
               </Suspense>
             }

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import BookCard from "../../components/category/BookCard.jsx"; // Make sure to adjust the import path
 
-const ReusableAuthor = ({
+const ReusablePublication = ({
 	                        photoSrc,
 	                        title,
 	                        description,
@@ -18,7 +18,7 @@ const ReusableAuthor = ({
 		const fetchAuthorName = async () => {
 			try {
 				const response = await axios.get(
-					`https://book-nest-backend.onrender.com/api/v1/writers/${id}`
+					`https://book-nest-backend.onrender.com/api/v1/publication/${id}`
 				);
 				setAuthorName(response.data.name);
 			} catch (error) {
@@ -71,4 +71,4 @@ const ReusableAuthor = ({
 	);
 };
 
-export default ReusableAuthor;
+export default ReusablePublication;
