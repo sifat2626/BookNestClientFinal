@@ -10,6 +10,22 @@ import { useWishlist } from "../../context/WishListContext";
 import { useAuth } from "../../context/auth";
 
 const NavbarPrev = () => {
+
+  const [categories,setCategories] = useState([]);
+  useEffect(() => {
+    // Fetch categories from the API
+    fetch('https://book-nest-backend.onrender.com/api/v1/categories')
+      .then(response => response.json())
+      .then(data => {
+        // Assuming the API response is an array of category objects
+        setCategories(data);
+      })
+      .catch(error => {
+        console.error('Error fetching categories:', error);
+      });
+  }, []);
+
+
   const location = useLocation();
   console.log('location', location);
   const [isInputDisabled, setIsInputDisabled] = useState(true);
@@ -312,57 +328,18 @@ const NavbarPrev = () => {
                 <div className="dropdown-menu">
                   <nav className="side-nav">
                     <ul className="menu-vertical sf-arrows">
-                      <li className="item-lead">
-                        <a href="src/layout/client/Navbar-prev.jsx#">
-                          Daily offers
-                        </a>
-                      </li>
-                      <li className="item-lead">
-                        <a href="src/layout/client/Navbar-prev.jsx#">
-                          Gift Ideas
-                        </a>
-                      </li>
-                      <li>
-                        <a href="src/layout/client/Navbar-prev.jsx#">Beds</a>
-                      </li>
-                      <li>
-                        <a href="src/layout/client/Navbar-prev.jsx#">
-                          Lighting
-                        </a>
-                      </li>
-                      <li>
-                        <a href="src/layout/client/Navbar-prev.jsx#">
-                          Sofas & Sleeper sofas
-                        </a>
-                      </li>
-                      <li>
-                        <a href="src/layout/client/Navbar-prev.jsx#">Storage</a>
-                      </li>
-                      <li>
-                        <a href="src/layout/client/Navbar-prev.jsx#">
-                          Armchairs & Chaises
-                        </a>
-                      </li>
-                      <li>
-                        <a href="src/layout/client/Navbar-prev.jsx#">
-                          Decoration
-                        </a>
-                      </li>
-                      <li>
-                        <a href="src/layout/client/Navbar-prev.jsx#">
-                          Kitchen Cabinets
-                        </a>
-                      </li>
-                      <li>
-                        <a href="src/layout/client/Navbar-prev.jsx#">
-                          Coffee & Tables
-                        </a>
-                      </li>
-                      <li>
-                        <a href="src/layout/client/Navbar-prev.jsx#">
-                          Outdoor Furniture
-                        </a>
-                      </li>
+                      {/*<li className="item-lead">*/}
+                      {/*  <a href="src/layout/client/Navbar-prev.jsx#">*/}
+                      {/*    Daily offers*/}
+                      {/*  </a>*/}
+                      {/*</li>*/}
+                      {categories.map((category,i)=>(
+                        <li className="item-lead" key={i}>
+                          <a href="src/layout/client/Navbar-prev.jsx#">
+                            {category.name}
+                          </a>
+                        </li>
+                      ))}
                     </ul>
                   </nav>
                 </div>
@@ -824,19 +801,7 @@ const NavbarPrev = () => {
                 Author
               </a>
             </li>
-            {/* <li className="nav-item dropdown">
-							<a className="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-								Dropdown
-							</a>
-							<ul className="dropdown-menu">
-								<li><a className="dropdown-item" href="#">Action</a></li>
-								<li><a className="dropdown-item" href="#">Another action</a></li>
-								<li>
-									<hr className="dropdown-divider" />
-								</li>
-								<li><a className="dropdown-item" href="#">Something else here</a></li>
-							</ul>
-						</li> */}
+
             <li className="nav-item border-bottom py-2">
               <a className="nav-link" href="src/layout/client/Navbar-prev.jsx#">
                 Publisher
@@ -885,12 +850,4 @@ const NavbarPrev = () => {
 
 export default NavbarPrev;
 
-// new author tags
-// <li>
-// <a href="product-extended.html">
-// 	<span>
-// 		Extended Info
-// 		<span className="tip tip-new">New</span>
-// 	</span>
-// </a>
-// </li>
+
