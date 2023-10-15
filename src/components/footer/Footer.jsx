@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Footer = () => {
 	return (
@@ -13,9 +14,9 @@ const Footer = () => {
 									<p>Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, eu vulputate magna eros eu
 										erat. </p>
 									<div className="widget-call">
-										<i className="phone-icon"><svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" viewBox="0 0 16 16"><g fill="currentColor"><path d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h6zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H5z"/><path d="M8 14a1 1 0 1 0 0-2a1 1 0 0 0 0 2z"/></g></svg></i>
+										<i className="phone-icon"><svg xmlns="http://chaudhuree.netlify.app" width="25" height="25" viewBox="0 0 16 16"><g fill="currentColor"><path d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h6zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H5z"/><path d="M8 14a1 1 0 1 0 0-2a1 1 0 0 0 0 2z"/></g></svg></i>
 										Got Question? Call us 24/7
-										<a href="tel:#">+01736 111 000</a>
+										<a href="tel:#">+01736 873 879</a>
 									</div>
 								</div>
 							</div>
@@ -25,11 +26,11 @@ const Footer = () => {
 									<h4 className="widget-title">Useful Links</h4>
 
 									<ul className="widget-list">
-										<li><a href="about.html">About BOOKLY</a></li>
-										<li><a href="#">Our Services</a></li>
-										<li><a href="#">How to shop on BOOKLY</a></li>
-										<li><a href="faq.html">FAQ</a></li>
-										<li><a href="contact.html">Contact us</a></li>
+										<li><Link to="/about">About BOOKLY</Link></li>
+										<li><Link to="/">Our Services</Link></li>
+										<li><Link to="/">How to shop on BOOKLY</Link></li>
+										<li><Link to="/">FAQ</Link></li>
+										<li><Link to="/contact">Contact us</Link></li>
 									</ul>
 								</div>
 							</div>
@@ -39,12 +40,12 @@ const Footer = () => {
 									<h4 className="widget-title">Customer Service</h4>
 
 									<ul className="widget-list">
-										<li><a href="#">Payment Methods</a></li>
-										<li><a href="#">Money-back guarantee!</a></li>
-										<li><a href="#">Returns</a></li>
-										<li><a href="#">Shipping</a></li>
-										<li><a href="#">Terms and conditions</a></li>
-										<li><a href="#">Privacy Policy</a></li>
+										<li><Link to="/">Payment Methods</Link></li>
+										<li><Link to="/">Money-back guarantee!</Link></li>
+										<li><Link to="/">Returns</Link></li>
+										<li><Link to="/">Shipping</Link></li>
+										<li><Link to="/">Terms and conditions</Link></li>
+										<li><Link to="/">Privacy Policy</Link></li>
 									</ul>
 								</div>
 							</div>
@@ -54,11 +55,11 @@ const Footer = () => {
 									<h4 className="widget-title">My Account</h4>
 
 									<ul className="widget-list">
-										<li><a href="#">Sign In</a></li>
-										<li><a href="cart.html">View Cart</a></li>
-										<li><a href="#">My Wishlist</a></li>
-										<li><a href="#">Track My Order</a></li>
-										<li><a href="#">Help</a></li>
+										<li><Link to="/login">Sign In</Link></li>
+										<li><Link to="/cart">View Cart</Link></li>
+										<li><Link to="/wishlist">My Wishlist</Link></li>
+										<li><Link to="/">Track My Order</Link></li>
+										<li><Link to="/contact">Help</Link></li>
 									</ul>
 								</div>
 							</div>

@@ -11,7 +11,7 @@ const ForgotPassword = () => {
 		e.preventDefault();
 		try {
 			const { data } = await axios.post(
-				'https://book-nest-backend.onrender.com/api/v1/forgot-password', // Update the URL to your forgot password API endpoint
+				'https://book-nest-backend.onrender.com/api/v1/forgotpassword', // Update the URL to your forgot password API endpoint
 				{
 					email,
 				}
@@ -31,6 +31,7 @@ const ForgotPassword = () => {
 
 	return (
 		<section style={{ backgroundColor: '#f8f9fa', minHeight: '75vh' }}>
+		
 			<div className="container py-5">
 				<div className="card shadow">
 					<div className="card-body">

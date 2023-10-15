@@ -30,11 +30,9 @@ const BookCard = ({ book, category }) => {
           navigate(`/book/${book._id}/${category._id}`);
           }
       }
-     
-      
+
       return;
     }
-    // event.stopPropagation();
 
     // Logic to update userInterests
     try {
@@ -59,9 +57,6 @@ const BookCard = ({ book, category }) => {
     }
     
   };
-
-  
-
   const toggleWishlist = (event) => {
     event.stopPropagation();
     wishlistDispatch({ type: "ADD_TO_WISHLIST", payload: book });
@@ -76,7 +71,7 @@ const BookCard = ({ book, category }) => {
     <div className="container mr-5">
       <div className="row">
         <div className="book-card" onClick={handleCardClick}>
-          <img src={book.photo} alt />
+          <img src={book?.photo} alt />
           <div className="book-card__content">
             <div className="col-12 text-right">
               {isInWishlist ? (
