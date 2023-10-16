@@ -1,0 +1,124 @@
+.pt-10{
+  margin-top: 30px !important;
+}
+
+.loader-container{
+  position: fixed;
+  top: 0; left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 10000;
+  background: #f7f7f7;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader-container img{
+  height: 7rem;
+}
+
+.navbarss{
+  position: relative;
+  top: 200px;
+  background-color: black;
+}
+
+
+.mobileMenu li:hover{
+  color: #FCB941;
+}
+
+h1.my-5 {
+  position: relative;
+  font-size: 35px;
+}
+h1.my-5::after {
+  width: 8%;
+  height: 5px;
+  content: "";
+  background: #0fd178;
+  position: absolute;
+  left: 10px;
+  bottom: -9px;
+}
+
+/* mega menu */
+.menu .megamenu > ul, .menu .megamenu div > ul {
+  position: static;
+  left: auto;
+  right: auto;
+  top: auto;
+  bottom: auto;
+  box-shadow: none;
+  margin-top: 0;
+  padding: 0;
+  min-width: 0;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 20px !important;
+}
+.see__more{
+
+    color: #15a362 !important;
+} 
+
+.see__more:hover{
+    color: #22719f !important;
+   
+}
+
+.phone-icon svg {
+  display: inline-block;
+  color: #15a362;
+  font-size: 3rem;
+  line-height: 1;
+  position: absolute;
+  left: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+}
+.btn-remove{ color:#c53838c5 !important; font-size: 18px !important;}
+.btn-remove:hover{ color:#f31c1cec !important;}
+
+.navbar-toggler{
+  box-shadow: none !important;
+}
+.header-search-wrapper.search-wrapper-wide.position-relative >input{
+  height: 35px !important;
+}
+.header-search-wrapper.search-wrapper-wide.position-relative >button{
+  box-shadow: none !important;
+  display: grid;
+  place-items: center;
+  height: 35px !important;
+
+}
+.header-dropdown:first-child .header-menu {
+  left: -22px !important;
+  padding: 14px 0 !important;
+}
+
+
+/* filterign tasks */
+.select-custom::after {
+
+  content: '' !important;
+
+}
+
+.disabled-input {
+  background-color: #cec5c51f !important; 
+  cursor: not-allowed; 
+}
+
+.nb.active{
+  color: #0fd178 !important;
+  border-top: 1px solid #0fd178 !important;
+}
+.checkout_btn>a:hover{
+  background-color: #10697ad7  !important;
+  color: #ffffff !important;
+  cursor: pointer;
+}
