@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
 import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import BookCard from "../../components/category/BookCard";
-import "./Books.css";
-import { SearchState } from "../../context/SearchContext.jsx";
-import FilterOption from "./shop/FilterOption.jsx";
 import { useFilterContext } from "../../context/FilterProvider";
-
+import { SearchState } from "../../context/SearchContext.jsx";
+import "./Books.css";
+import FilterOption from "./shop/FilterOption.jsx";
 const Books = () => {
   const { search, setSearch } = SearchState();
   const [searchedBook, setSearchedBook] = useState([]);
@@ -16,6 +16,9 @@ const Books = () => {
   const [page, setPage] = useState(1);
   const [perPage, setPerPage] = useState(10);
   const [loading, setLoading] = useState(false);
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+  const paramValue = searchParams.get("category");
   const handleLoadMore = () => {
     setLoading(true);
     setTimeout(() => {
@@ -24,17 +27,14 @@ const Books = () => {
     }, 1000);
   };
 
-
   const {
     selectedCategory,
+    setSelectedCategory,
     selectedPublication,
     selectedAuthor,
     minPrice,
-    maxPrice
-
+    maxPrice,
   } = useFilterContext();
-  
-// {{baseUrl}}/filter?categories=Science Fiction&publications=Mukto Pathshala&authors=kazi nazrul isla&minPrice=100&maxPrice=150
 
   const fetchBooks = async () => {
     try {
@@ -44,7 +44,6 @@ const Books = () => {
 
       setBooks(data.data[0].Rows);
       setTotal(data.data[0].Total[0].count);
-      // console.log("total: " + data.data[0].Total[0].count);
     } catch (error) {
       console.log("error fetching books in Books.jsx", error.message);
     }
@@ -58,64 +57,46 @@ const Books = () => {
     fetchBooks();
   }, [page, perPage]);
 
-
-  // useEffect(() => {
-  //   if (search == undefined || search == "" || search == null) {
-  //     setSearchedBook([]);
-  //   } else {
-  //     const fetchSearchedBook = async () => {
-  //       try {
-  //         const response = await axios.get(
-  //           `https://book-nest-backend.onrender.com/api/v1/search/books/${search}`
-  //         );
-  //         console.log("response: ", response.data);
-  //         setSearchedBook(response.data);
-  //       } catch (error) {
-  //         console.error("Error fetching categories:", error.message);
-  //       }
-  //     };
-  //     fetchSearchedBook();
-  //   }
-  // }, [search]);
-
+  useEffect(() => {
+    if(paramValue!=null && paramValue!=undefined && paramValue !=""){
+        setSelectedCategory(paramValue);
+    }
+  }, [paramValue]);
 
   useEffect(() => {
-   
-      const filterBook = async () => {
-        try {
-          const response = await axios.get(
-            `https://book-nest-backend.onrender.com/api/v1/filter?categories=${selectedCategory}&publications=${selectedPublication}&authors=${selectedAuthor}&minPrice=${minPrice}&maxPrice=${maxPrice}`
-          );
-          console.log("response: ", response.data);
-          setBooks(response.data['filteredBooks']);
-        } catch (error) {
-          console.error("Error fetching categories:", error.message);
-        }
-      };
-      filterBook();
-    
-  }, [ selectedCategory,
+    const filterBook = async () => {
+      try {
+        const response = await axios.get(
+          `https://book-nest-backend.onrender.com/api/v1/filter?categories=${selectedCategory}&publications=${selectedPublication}&authors=${selectedAuthor}&minPrice=${minPrice}&maxPrice=${maxPrice}`
+        );
+        console.log("response: ", response.data);
+        setBooks(response.data["filteredBooks"]);
+      } catch (error) {
+        console.error("Error fetching categories:", error.message);
+      }
+    };
+    filterBook();
+  }, [
+    selectedCategory,
     selectedPublication,
     selectedAuthor,
     minPrice,
-    maxPrice]);
+    maxPrice,
+  ]);
 
-
-    console.log("mitul: ", (searchedBook['filteredBooks']));
 
   return (
     <div className="container">
       <div className="row">
         <div className="col-md-3">
-{/* Filter options */}
-          <FilterOption/>
-
+          {/* Filter options */}
+          <FilterOption />
         </div>
         <div className="col-md-9">
           {searchedBook.length > 0 && (
             <div className="container">
               <div className="row py-5 ">
-                {searchedBook['filteredBooks'].map((book) => {
+                {searchedBook["filteredBooks"].map((book) => {
                   return (
                     <div className="col-6 col-md-3 mt-4">
                       <BookCard
@@ -173,7 +154,6 @@ const Books = () => {
           )}
         </div>
       </div>
-
     </div>
   );
 };

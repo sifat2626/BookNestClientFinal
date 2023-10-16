@@ -1,6 +1,4 @@
 import axios from "axios";
-import "./../../assets/css/style1.css";
-import "./../../assets/css/skin-color.css";
 import React, { useEffect, useState } from "react";
 import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import CartItem from "../../components/client/CartItem";
@@ -8,26 +6,26 @@ import { CartState } from "../../context/CartContext";
 import { SearchState } from "../../context/SearchContext";
 import { useWishlist } from "../../context/WishListContext";
 import { useAuth } from "../../context/auth";
+import "./../../assets/css/skin-color.css";
+import "./../../assets/css/style1.css";
 
 const NavbarPrev = () => {
-
-  const [categories,setCategories] = useState([]);
+  const [categories, setCategories] = useState([]);
   useEffect(() => {
     // Fetch categories from the API
-    fetch('https://book-nest-backend.onrender.com/api/v1/categories')
-      .then(response => response.json())
-      .then(data => {
+    fetch("https://book-nest-backend.onrender.com/api/v1/categories")
+      .then((response) => response.json())
+      .then((data) => {
         // Assuming the API response is an array of category objects
         setCategories(data);
       })
-      .catch(error => {
-        console.error('Error fetching categories:', error);
+      .catch((error) => {
+        console.error("Error fetching categories:", error);
       });
   }, []);
 
-
   const location = useLocation();
-  console.log('location', location);
+  // console.log('location', location);
   const [isInputDisabled, setIsInputDisabled] = useState(true);
   const [previousLocation, setPreviousLocation] = useState(location);
   const [authors, setAuthors] = useState([]);
@@ -52,7 +50,9 @@ const NavbarPrev = () => {
   }
   const fetchAuthors = async () => {
     try {
-      const response = await axios.get("https://book-nest-backend.onrender.com/api/v1/writers");
+      const response = await axios.get(
+        "https://book-nest-backend.onrender.com/api/v1/writers"
+      );
       setAuthors(response.data);
     } catch (error) {
       console.error("Error fetching authors:", error.message);
@@ -217,9 +217,12 @@ const NavbarPrev = () => {
                     </button>
                     <input
                       disabled={isInputDisabled}
-                      className={isInputDisabled ? "disabled-input form-control" : "form-control"}
+                      className={
+                        isInputDisabled
+                          ? "disabled-input form-control"
+                          : "form-control"
+                      }
                       type="search"
-                     
                       placeholder="Search ..."
                       value={search}
                       onChange={(e) => setSearch(e.target.value)}
@@ -312,8 +315,8 @@ const NavbarPrev = () => {
           <div className="container">
             <div className="header-left">
               <div className="dropdown category-dropdown">
-                <a
-                  href="src/layout/client/Navbar-prev.jsx#"
+                <Link
+                  to="/books"
                   className="dropdown-toggle"
                   role="button"
                   data-toggle="dropdown"
@@ -323,21 +326,17 @@ const NavbarPrev = () => {
                   title="Browse Categories"
                 >
                   Browse Categories <i className="bx bx-chevron-down"></i>
-                </a>
+                </Link>
 
                 <div className="dropdown-menu">
                   <nav className="side-nav">
                     <ul className="menu-vertical sf-arrows">
-                      {/*<li className="item-lead">*/}
-                      {/*  <a href="src/layout/client/Navbar-prev.jsx#">*/}
-                      {/*    Daily offers*/}
-                      {/*  </a>*/}
-                      {/*</li>*/}
-                      {categories.map((category,i)=>(
+                      
+                      {categories.map((category, i) => (
                         <li className="item-lead" key={i}>
-                          <a href="src/layout/client/Navbar-prev.jsx#">
+                          <NavLink to={`/books?category=${category.name}`}>
                             {category.name}
-                          </a>
+                          </NavLink>
                         </li>
                       ))}
                     </ul>
@@ -392,9 +391,7 @@ const NavbarPrev = () => {
                       <div className="row no-gutters">
                         <div className="col-md-12">
                           <div className="menu-col">
-                            {/*
-														 <div className="menu-title">Product Details</div> 
-														*/}
+        
 
                             <ul>
                               {publications?.map((publication, index) => (
@@ -446,302 +443,6 @@ const NavbarPrev = () => {
           </div>
 
           <div className="mobile-menu-overlay"></div>
-
-          <div className="mobile-menu-container mobile-menu-light">
-            <div className="mobile-menu-wrapper">
-              <span className="mobile-menu-close">
-                <i className="icon-close"></i>
-              </span>
-
-              <form
-                onSubmit={(e) => e.preventDefault()}
-                className="mobile-search"
-              >
-                <label for="mobile-search" className="sr-only">
-                  Search
-                </label>
-                <input
-                  type="search"
-                  className="form-control"
-                  name="mobile-search"
-                  id="mobile-search"
-                  placeholder="Search.."
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                />
-                <button className="btn btn-primary" type="submit">
-                  <i className="icon-search"></i>
-                </button>
-              </form>
-
-              <ul
-                className="nav nav-pills-mobile nav-border-anim"
-                role="tablist"
-              >
-                <li className="nav-item">
-                  <a
-                    className="nav-link active"
-                    id="mobile-menu-link"
-                    data-toggle="tab"
-                    href="src/layout/client/Navbar-prev.jsx#mobile-menu-tab"
-                    role="tab"
-                    aria-controls="mobile-menu-tab"
-                    aria-selected="true"
-                  >
-                    Menu
-                  </a>
-                </li>
-                <li className="nav-item">
-                  <a
-                    className="nav-link"
-                    id="mobile-cats-link"
-                    data-toggle="tab"
-                    href="src/layout/client/Navbar-prev.jsx#mobile-cats-tab"
-                    role="tab"
-                    aria-controls="mobile-cats-tab"
-                    aria-selected="false"
-                  >
-                    Categories
-                  </a>
-                </li>
-              </ul>
-
-              <div className="tab-content">
-                <div
-                  className="tab-pane fade show active"
-                  id="mobile-menu-tab"
-                  role="tabpanel"
-                  aria-labelledby="mobile-menu-link"
-                >
-                  <nav className="mobile-nav">
-                    <ul className="mobile-menu">
-                      <li className="active">
-                        <a href="../../../index.html">Home</a>
-                      </li>
-                      <li>
-                        <a href="category.html">
-                          Author <span className="mmenu-btn"></span>
-                        </a>
-                        <ul>
-                          <li>
-                            <a href="category-list.html">Shop List</a>
-                          </li>
-                          <li>
-                            <a href="category-2cols.html">
-                              Shop Grid 2 Columns
-                            </a>
-                          </li>
-                          <li>
-                            <a href="category.html">Shop Grid 3 Columns</a>
-                          </li>
-                          <li>
-                            <a href="category-4cols.html">
-                              Shop Grid 4 Columns
-                            </a>
-                          </li>
-                          <li>
-                            <a href="category-boxed.html">
-                              <span>
-                                Shop Boxed No Sidebar
-                                <span className="tip tip-hot">Hot</span>
-                              </span>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="category-fullwidth.html">
-                              Shop Fullwidth No Sidebar
-                            </a>
-                          </li>
-                          <li>
-                            <a href="product-category-boxed.html">
-                              Product Category Boxed
-                            </a>
-                          </li>
-                          <li>
-                            <a href="product-category-fullwidth.html">
-                              <span>
-                                Product Category Fullwidth
-                                <span className="tip tip-new">New</span>
-                              </span>
-                            </a>
-                          </li>
-                          <li>
-                            <Link to="/cart">Cart</Link>
-                          </li>
-                          <li>
-                            <a href="checkout.html">Checkout</a>
-                          </li>
-                          <li>
-                            <Link to="/wishlist">Wishlist</Link>
-                          </li>
-                          <li>
-                            <a href="src/layout/client/Navbar-prev.jsx#">
-                              Lookbook
-                            </a>
-                          </li>
-                        </ul>
-                      </li>
-                      <li>
-                        <a href="product.html" className="">
-                          Publisher <span className="mmenu-btn"></span>
-                        </a>
-                        <ul>
-                          <li>
-                            <a href="product.html">Default</a>
-                          </li>
-                          <li>
-                            <a href="product-centered.html">Centered</a>
-                          </li>
-                          <li>
-                            <a href="product-extended.html">
-                              <span>
-                                Extended Info
-                                <span className="tip tip-new">New</span>
-                              </span>
-                            </a>
-                          </li>
-                          <li>
-                            <a href="product-gallery.html">Gallery</a>
-                          </li>
-                          <li>
-                            <a href="product-sticky.html">Sticky Info</a>
-                          </li>
-                          <li>
-                            <a href="product-sidebar.html">
-                              Boxed With Sidebar
-                            </a>
-                          </li>
-                          <li>
-                            <a href="product-fullwidth.html">Full Width</a>
-                          </li>
-                          <li>
-                            <a href="product-masonry.html">
-                              Masonry Sticky Info
-                            </a>
-                          </li>
-                        </ul>
-                      </li>
-                      <li>
-                        <a href="src/layout/client/Navbar-prev.jsx#">Books</a>
-                      </li>
-                      <li>
-                        <a href="blog.html">Blog</a>
-                      </li>
-                      <li>
-                        <a href="elements-list.html">About</a>
-                      </li>
-                      <li>
-                        <a href="elements-list.html">Contact</a>
-                      </li>
-                    </ul>
-                  </nav>
-                </div>
-                <div
-                  className="tab-pane fade"
-                  id="mobile-cats-tab"
-                  role="tabpanel"
-                  aria-labelledby="mobile-cats-link"
-                >
-                  <nav className="mobile-cats-nav">
-                    <ul className="mobile-cats-menu">
-                      <li>
-                        <a
-                          className="mobile-cats-lead"
-                          href="src/layout/client/Navbar-prev.jsx#"
-                        >
-                          Daily offers
-                        </a>
-                      </li>
-                      <li>
-                        <a
-                          className="mobile-cats-lead"
-                          href="src/layout/client/Navbar-prev.jsx#"
-                        >
-                          Gift Ideas
-                        </a>
-                      </li>
-                      <li>
-                        <a href="src/layout/client/Navbar-prev.jsx#">Beds</a>
-                      </li>
-                      <li>
-                        <a href="src/layout/client/Navbar-prev.jsx#">
-                          Lighting
-                        </a>
-                      </li>
-                      <li>
-                        <a href="src/layout/client/Navbar-prev.jsx#">
-                          Sofas & Sleeper sofas
-                        </a>
-                      </li>
-                      <li>
-                        <a href="src/layout/client/Navbar-prev.jsx#">Storage</a>
-                      </li>
-                      <li>
-                        <a href="src/layout/client/Navbar-prev.jsx#">
-                          Armchairs & Chaises
-                        </a>
-                      </li>
-                      <li>
-                        <a href="src/layout/client/Navbar-prev.jsx#">
-                          Decoration{" "}
-                        </a>
-                      </li>
-                      <li>
-                        <a href="src/layout/client/Navbar-prev.jsx#">
-                          Kitchen Cabinets
-                        </a>
-                      </li>
-                      <li>
-                        <a href="src/layout/client/Navbar-prev.jsx#">
-                          Coffee & Tables
-                        </a>
-                      </li>
-                      <li>
-                        <a href="src/layout/client/Navbar-prev.jsx#">
-                          Outdoor Furniture{" "}
-                        </a>
-                      </li>
-                    </ul>
-                  </nav>
-                </div>
-              </div>
-
-              <div className="social-icons">
-                <a
-                  href="src/layout/client/Navbar-prev.jsx#"
-                  className="social-icon"
-                  target="_blank"
-                  title="Facebook"
-                >
-                  <i className="icon-facebook-f"></i>
-                </a>
-                <a
-                  href="src/layout/client/Navbar-prev.jsx#"
-                  className="social-icon"
-                  target="_blank"
-                  title="Twitter"
-                >
-                  <i className="icon-twitter"></i>
-                </a>
-                <a
-                  href="src/layout/client/Navbar-prev.jsx#"
-                  className="social-icon"
-                  target="_blank"
-                  title="Instagram"
-                >
-                  <i className="icon-instagram"></i>
-                </a>
-                <a
-                  href="src/layout/client/Navbar-prev.jsx#"
-                  className="social-icon"
-                  target="_blank"
-                  title="Youtube"
-                >
-                  <i className="icon-youtube"></i>
-                </a>
-              </div>
-            </div>
-          </div>
         </div>
       </header>
 
@@ -763,69 +464,48 @@ const NavbarPrev = () => {
         </div>
         <div className="offcanvas-body">
           <div className=" mt-2 w-75 mx-auto ">
-            <form onSubmit={(e) => e.preventDefault()}>
-              <div className="header-search-wrapper search-wrapper-wide position-relative">
-                <label for="q" className="sr-only">
-                  Search
-                </label>
-
-                <input
-                  type="search"
-                  className="form-control"
-                  placeholder="Search product ..."
-                  value={search}
-                  onChange={(e) => setSearch(e.target.value)}
-                />
-                <button
-                  className="position-absolute px-5 py-2 border  border-0 bg-primary fs-2 text-white top-0 end-0"
-                  type="submit"
-                >
-                  <i className="bx bx-search-alt-2"></i>
-                </button>
-              </div>
-            </form>
           </div>
 
           <ul className="mobileMenu navbar-nav justify-content-end flex-grow-1 pe-3 fw-semibold ml-4 fs-4">
             <li className="nav-item border-bottom py-2">
-              <a
+              <NavLink
                 className="nav-link active"
                 aria-current="page"
-                href="src/layout/client/Navbar-prev.jsx#"
+                to="/"
               >
                 Home
-              </a>
+              </NavLink>
             </li>
             <li className="nav-item border-bottom py-2">
-              <a className="nav-link" href="src/layout/client/Navbar-prev.jsx#">
+              <NavLink className="nav-link" to="/authors">
                 Author
-              </a>
+              </NavLink>
             </li>
 
             <li className="nav-item border-bottom py-2">
-              <a className="nav-link" href="src/layout/client/Navbar-prev.jsx#">
+              <NavLink className="nav-link" to="/publications">
                 Publisher
-              </a>
+              </NavLink>
             </li>
             <li className="nav-item border-bottom py-2">
-              <a className="nav-link" href="src/layout/client/Navbar-prev.jsx#">
+              <NavLink className="nav-link" to="/books">
                 Books
-              </a>
+              </NavLink>
             </li>
             <li className="nav-item border-bottom py-2">
-              <a className="nav-link" href="src/layout/client/Navbar-prev.jsx#">
+              <NavLink className="nav-link" to="/blog">
                 Blog
-              </a>
+              </NavLink>
             </li>
             <li className="nav-item border-bottom py-2">
-              <a className="nav-link" href="src/layout/client/Navbar-prev.jsx#">
+              <NavLink className="nav-link" to="/about">
                 About
-              </a>
+              </NavLink>
             </li>
             <li className="nav-item border-bottom py-2">
-              <a className="nav-link" href="src/layout/client/Navbar-prev.jsx#">
+              <NavLink className="nav-link" to="/contact">
                 Contact
-              </a>
+              </NavLink>
             </li>
           </ul>
 
@@ -849,5 +529,3 @@ const NavbarPrev = () => {
 };
 
 export default NavbarPrev;
-
-

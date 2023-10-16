@@ -97,7 +97,7 @@ const Login = () => {
                 </p>
                 <input type="hidden" name="redirect" defaultValue="register" />
                 <div className="login_submit d-flex justify-content-between flex-md-row flex-col">
-                  <Link className="lost-password" to="/forgetpassword">
+                  <Link className="lost-password" to="/forgot">
                     Lost your password?
                   </Link>
                   <div className="login_submit-left">

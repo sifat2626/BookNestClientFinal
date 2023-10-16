@@ -60,6 +60,7 @@ export function FilterProvider({ children }) {
 		fetchFilteredBooks();
 	}, [
 		selectedCategory,
+		setSelectedCategory,
 		selectedPublication,
 		selectedAuthor,
 		minPrice,

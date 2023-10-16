@@ -20,6 +20,7 @@ import PublicationListing from "./pages/client/PublicationListing.jsx";
 import PublicationById from "./pages/client/PublicationById.jsx";
 
 const ForgotPassword = lazy(() => import("./pages/auth/ForgotPassword.jsx"));
+const ResetPassword = lazy(() => import("./pages/auth/ResetPassword.jsx"));
 // const name = lazy(() => import("link"));
 //client
 const Home = lazy(() => import("./pages/client/HomePage.jsx"));
@@ -135,7 +136,7 @@ function App() {
             element={
               <Suspense fallback={<Loader />}>
                 <AuthorById authorId={useParams().id}/>
-                {/*<AuthorDetailsCard />*/}
+                
               </Suspense>
             }
           />
@@ -144,8 +145,8 @@ function App() {
             path="/publication/:id"
             element={
               <Suspense fallback={<Loader />}>
-                <PublicationById authorId={useParams().id}/>
-                {/*<AuthorDetailsCard />*/}
+                <PublicationById publicationId={useParams().id}/>
+                
               </Suspense>
             }
           />
@@ -244,6 +245,14 @@ function App() {
             element={
               <Suspense fallback={<Loader />}>
                 <ForgotPassword />
+              </Suspense>
+            }
+          />
+          <Route
+            path="/resetpassword/:token"
+            element={
+              <Suspense fallback={<Loader />}>
+                <ResetPassword />
               </Suspense>
             }
           />
